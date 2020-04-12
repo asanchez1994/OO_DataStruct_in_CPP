@@ -1,0 +1,83 @@
+template <typename T>
+LinkedList<T> LinkedList<T>::merge(const LinkedList<T> &other) const
+{
+
+  // You can't edit the original instance of LinkedList that is calling
+  // merge because the function is marked const, and the "other" input
+  // list is also marked const. However, if you wish, you can make some
+  // "working copies" of the two input lists like this, and then edit
+  // the copies as needed:
+  LinkedList<T> left = *this;
+  LinkedList<T> right = other;
+  // You need to create and return a new list for the merged result.
+  LinkedList<T> merged;
+
+  // -----------------------------------------------------------
+  // TODO: Your code here!
+  // -----------------------------------------------------------
+  // Please implement this function according to the description
+  // above and in the instructions PDF.
+
+  // Hint:
+  // Assuming that the left and right lists are already sorted,
+  // which list items currently contain the candidates for the first
+  // item in the merged list?
+  // Think of what needs to be placed in the merged list first. Then,
+  // think about what should come after that. (And so on.)
+
+  // check if either list is empty
+
+  if (left.empty() && right.empty())
+  {
+    return left;
+  }
+  if (left.empty())
+  {
+    return right;
+  }
+  if (right.empty())
+  {
+    return left;
+  }
+
+  //find out size of merged list
+
+  int sizeT = left.size_ + right.size_;
+
+/*
+  std::cout << "left size " << left.size_ << "\n";
+  std::cout << "right size " << right.size_ << "\n";
+  std::cout << "sizeT " << sizeT << "\n";
+*/
+  while (sizeT)
+  {
+    /*std::cout << "in the loop"
+              << "\n";
+    std::cout << "sizeT " << sizeT << "\n";
+    */
+
+    if (left.empty())
+    {
+      merged.pushBack(right.front());
+      right.popFront();
+    }
+    else if (right.empty())
+    {
+      merged.pushBack(left.front());
+      left.popFront();
+    }
+
+    else if (right.front() <= left.front())
+    {
+      merged.pushBack(right.front());
+      right.popFront();
+    }
+    else
+    {
+      merged.pushBack(left.front());
+      left.popFront();
+    }
+    sizeT--;
+  }
+  return merged;
+}

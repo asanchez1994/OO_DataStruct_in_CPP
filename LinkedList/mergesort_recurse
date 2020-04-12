@@ -1,0 +1,24 @@
+template <typename T>
+  2 LinkedList<T> LinkedList<T>::mergehelp(LinkedList<T> & right, LinkedList<T> & left, LinkedList<    T> &merged) {
+  1 
+245     if (right.size() == 0){
+  1         merged.getTailPtr()->next = left.getHeadPtr();
+  2         left.getHeadPtr()->prev = merged.getTailPtr();
+  3         return merged;
+  4     }
+  5     if (left.size() == 0){
+  6         merged.getTailPtr()->next = right.getHeadPtr();
+  7         right.getHeadPtr()->prev = merged.getTailPtr();
+  8         return merged;
+  9     }
+ 10     else{
+ 11          if (left.getHeadPtr()->data > right.getHeadPtr()->data){
+ 12             merged.pushBack(right.getHeadPtr->data);
+ 13             return mergehelp(right.popFront(),left,  merged);
+ 14         }
+ 15          else{
+ 16             merged.pushBack(left.getHeadPtr()->data);
+ 17             return mergehelp(right, left.popFront(), merged);
+ 18         }
+ 19     }
+
