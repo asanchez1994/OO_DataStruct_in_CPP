@@ -1,5 +1,7 @@
 # Accelerated Computer Science Fundamentals Example Code
 
+_Coursework by Andrew Sanchez for the following coursera course:
+
 This example code is meant to accompany the following online course sequence:
 
 https://www.coursera.org/specializations/cs-fundamentals
